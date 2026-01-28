@@ -1,0 +1,7 @@
+gradio
+streamlit
+opencv-python-headless
+tensorflow
+numpy
+mediapipe
+scikit-learn
