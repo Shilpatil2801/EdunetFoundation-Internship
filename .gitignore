@@ -1,5 +1,20 @@
+# Python
 __pycache__/
 *.pyc
-dataset/
+
+# Gradio
+.gradio/
+
+# Logs
 logs/
-.env
+
+# Dataset (DO NOT push raw training data)
+dataset/
+
+# Large model files (optional – choose ONE)
+# isl_model.h5
+# isl_model.keras
+
+# OS
+.DS_Store
+Thumbs.db

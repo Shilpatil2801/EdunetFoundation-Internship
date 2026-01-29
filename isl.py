@@ -66,3 +66,5 @@ model.fit(
 # 6. Save model
 model.save(os.path.join(BASE_DIR, "isl_model.h5"))
 print("Model saved as isl_model.h5")
+model.save("isl_model.keras")
+
