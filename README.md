@@ -95,3 +95,51 @@ internshipproject/
 ```bash
 python -m venv isl_env
 isl_env\Scripts\activate
+### 2️⃣ Install dependencies
+```bash
+pip install -r requirements.txt
+### 3️⃣ Run the application
+```bash
+python app.py
+
+## 🌐 Deployment (Hugging Face Spaces)
+
+- **Framework:** Gradio  
+- **Runtime:** CPU  
+- **Webcam access:** Enabled  
+- **Public demo:** Accessible via browser  
+
+---
+
+## 📷 Demo Capabilities
+
+- Live webcam input  
+- Real-time hand landmark visualization  
+- Continuous prediction updates  
+- Confidence thresholding to reduce false positives  
+
+---
+
+## ⚠️ Known Limitations
+
+- Static gestures only (no continuous word recognition yet)  
+- Sensitive to lighting and camera angle  
+- Single-hand dominant gestures work best  
+
+---
+
+## 🔮 Future Enhancements
+
+- ✅ Dynamic gesture recognition (words/sentences)  
+- ✅ Temporal smoothing for stable predictions  
+- ✅ Multi-hand gesture support  
+- ✅ Transformer-based sequence models  
+- ✅ Mobile-friendly deployment  
+
+---
+
+## 👩‍💻 Author
+
+**Shilpa Patil**  
+Artificial Intelligence & Data Science Student  
+**Internship Project – ISL Recognition**
