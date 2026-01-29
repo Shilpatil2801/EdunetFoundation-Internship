@@ -90,9 +90,9 @@ internshipproject/
 ---
 
 ## 🚀 Running Locally
-
-### 1️⃣ Create virtual environment
 ```bash
+### 1️⃣ Create virtual environment
+
 python -m venv isl_env
 isl_env\Scripts\activate
 
