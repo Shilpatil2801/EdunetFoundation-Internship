@@ -95,13 +95,14 @@ internshipproject/
 ```bash
 python -m venv isl_env
 isl_env\Scripts\activate
+
 ### 2️⃣ Install dependencies
 ```bash
 pip install -r requirements.txt
 ### 3️⃣ Run the application
 ```bash
 python app.py
-
+```
 ## 🌐 Deployment (Hugging Face Spaces)
 
 - **Framework:** Gradio  
