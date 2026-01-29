@@ -61,3 +61,37 @@ internshipproject/
 ├── requirements.txt        # Project dependencies
 ├── README.md               # Project documentation
 └── .gitignore
+
+## 🧠 Model Details
+
+- **Input shape:** `(30, 126)`
+  - 30 frames  
+  - 21 landmarks × (x, y, z) × 2 hands  
+
+- **Architecture:**
+  - LSTM layers  
+  - Dense output layer with Softmax  
+
+- **Loss function:** Categorical Crossentropy  
+- **Output:** Alphabet or digit label with confidence score  
+
+---
+
+## 📊 Dataset Description
+
+- Custom-collected dataset using webcam  
+- Each class folder contains `.npy` files  
+- Each file represents a **sequence of hand landmarks**
+
+### Labels include:
+- **Digits:** `0–9`  
+- **Alphabets:** `A–Z`  
+
+---
+
+## 🚀 Running Locally
+
+### 1️⃣ Create virtual environment
+```bash
+python -m venv isl_env
+isl_env\Scripts\activate
