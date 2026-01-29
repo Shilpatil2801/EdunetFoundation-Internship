@@ -61,7 +61,7 @@ internshipproject/
 ├── requirements.txt        # Project dependencies
 ├── README.md               # Project documentation
 └── .gitignore
-
+```
 ## 🧠 Model Details
 
 - **Input shape:** `(30, 126)`
