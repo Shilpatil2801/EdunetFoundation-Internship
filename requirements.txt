@@ -1,7 +1,7 @@
-streamlit==1.32.0
+streamlit==1.56.0
 tensorflow==2.13.1
-opencv-python-headless
-numpy
-mediapipe
+opencv-python-headless==4.11.0.86
+numpy==1.24.3
+mediapipe==0.10.33
 scikit-learn
-protobuf<4
+protobuf==3.20.3
