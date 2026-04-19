@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-model = load_model("isl_model.keras")
+model = load_model("isl_modelv3.h5")
 actions = np.load(os.path.join(BASE_DIR, "class_names.npy"))
 
 SEQUENCE_LENGTH = 30

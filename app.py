@@ -1,53 +1,58 @@
-import gradio as gr
+import streamlit as st
 import cv2
 import numpy as np
+from collections import deque
+
 from camera import extract_keypoints
 from inference_utils import predict_sign
 
-SEQUENCE_LENGTH = 30
+st.set_page_config(page_title="ISL Recognition", layout="wide")
 
-def recognize_sign(video_path):
-    if video_path is None:
-        return "No video received"
+# ---------------- UI ----------------
+st.title("🤟 Indian Sign Language Recognition")
+st.markdown("Real-time gesture recognition using LSTM + MediaPipe")
 
-    cap = cv2.VideoCapture(video_path)
-    sequence = []
+run = st.sidebar.checkbox("Start Camera")
 
-    while cap.isOpened():
-        ret, frame = cap.read()
-        if not ret:
-            break
+col1, col2 = st.columns(2)
+frame_placeholder = col1.empty()
+result_placeholder = col2.empty()
 
-        frame, keypoints = extract_keypoints(frame)
+# ---------------- Buffer ----------------
+sequence = deque(maxlen=30)
 
-        # Normalize to 126 keypoints
-        if len(keypoints) == 63:
-            keypoints = np.concatenate([keypoints, np.zeros(63)])
-        elif len(keypoints) != 126:
-            keypoints = np.zeros(126)
+cap = cv2.VideoCapture(0)
 
+while run:
+    ret, frame = cap.read()
+    if not ret:
+        st.error("Camera not working")
+        break
+
+    frame = cv2.flip(frame, 1)
+
+    # Extract keypoints
+    frame, keypoints = extract_keypoints(frame)
+
+    if len(keypoints) > 0:
         sequence.append(keypoints)
-        sequence = sequence[-SEQUENCE_LENGTH:]
 
-    cap.release()
+    # Predict when sequence is full
+    label, confidence = predict_sign(list(sequence))
 
-    label, confidence = predict_sign(sequence)
+    # Convert frame for display
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    frame_placeholder.image(frame_rgb, channels="RGB")
 
+    # Display prediction
     if label:
-        return f"Prediction: {label}\nConfidence: {confidence:.2f}"
+        result_placeholder.markdown(
+            f"""
+            ## 🔤 Sign: **{label}**
+            ### 🎯 Confidence: **{confidence:.2f}**
+            """
+        )
     else:
-        return "Gesture not recognized confidently."
+        result_placeholder.markdown("### Detecting...")
 
-iface = gr.Interface(
-    fn=recognize_sign,
-    inputs=gr.Video(
-        sources=["webcam", "upload"],
-        label="Record or Upload ISL Gesture"
-    ),
-    outputs=gr.Textbox(label="Prediction"),
-    title="Indian Sign Language Recognition System",
-    description="LSTM-based ISL recognition using MediaPipe hand landmarks"
-)
-
-if __name__ == "__main__":
-    iface.launch()
+cap.release()

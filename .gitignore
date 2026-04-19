@@ -2,8 +2,7 @@
 __pycache__/
 *.pyc
 
-# Gradio
-.gradio/
+
 
 # Logs
 logs/
@@ -18,3 +17,5 @@ dataset/
 # OS
 .DS_Store
 Thumbs.db
+
+isl_model.h5
